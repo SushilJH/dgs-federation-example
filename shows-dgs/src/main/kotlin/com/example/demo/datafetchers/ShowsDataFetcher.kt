@@ -16,6 +16,8 @@
 
 package com.example.demo.datafetchers
 
+import com.example.demo.generated.DgsConstants
+import com.example.demo.generated.types.NewShow
 import com.example.demo.generated.types.Show
 import com.example.demo.services.ShowsService
 import com.netflix.graphql.dgs.DgsComponent
@@ -36,5 +38,10 @@ class ShowsDataFetcher {
         } else {
             showsService.shows()
         }
+    }
+
+    @DgsData(parentType = "Mutation")
+    fun addShow(@InputArgument newShow: NewShow) : String {
+        return showsService.addNewShow(newShow);
     }
 }

@@ -16,11 +16,14 @@
 
 package com.example.demo.services
 
+import com.example.demo.generated.types.NewShow
 import com.example.demo.generated.types.Show
 import org.springframework.stereotype.Service
+import kotlin.random.Random
 
 interface ShowsService {
     fun shows(): List<Show>
+    fun addNewShow(newShow: NewShow): String
 }
 
 @Service
@@ -33,5 +36,9 @@ class BasicShowsService : ShowsService {
             Show("4","Dead to Me", 2019),
             Show("5","Orange is the New Black", 2013)
         )
+    }
+
+    override fun addNewShow(newShow: NewShow): String {
+        return Random(6).nextInt(50).toString();
     }
 }

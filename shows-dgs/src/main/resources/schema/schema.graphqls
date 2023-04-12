@@ -2,8 +2,17 @@ type Query {
     shows(titleFilter: String): [Show]
 }
 
+type Mutation {
+    addShow(newShow: NewShow): String
+}
+
 type Show @key(fields: "id") {
     id: ID
+    title: String
+    releaseYear: Int
+}
+
+input NewShow {
     title: String
     releaseYear: Int
 }
